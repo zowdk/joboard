@@ -43,7 +43,7 @@ export default [
     id: 4,
     postedOn: "2024-02-014",
     title: "QA Engineer",
-    company: "Apple",
+    company: "Planday",
     type: "Full Time",
     experience: "Junior Level",
     location: "Hybrid",
