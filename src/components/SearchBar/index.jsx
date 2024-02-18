@@ -15,6 +15,10 @@ function SearchBar() {
     }));
   };
 
+  const search = async () => {
+    await props.fetchJobsCustom(jobCriteria);
+  };
+
   return (
     <div className="flex gap-4 my-10 justify-center px-10">
       {/* --- job role --- */}
@@ -91,7 +95,10 @@ function SearchBar() {
       </select>
       {/* --- Search btn--- */}
 
-      <button className="w-64 bg-blue-500 text-white font-bold py-3 rounded-md">
+      <button
+        onClick={search}
+        className="w-64 bg-blue-500 text-white font-bold py-3 rounded-md"
+      >
         Search
       </button>
     </div>
