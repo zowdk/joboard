@@ -16,12 +16,17 @@ function App() {
 
   const fetchJobs = async () => {
     //import db from firestore
+    const tempJobs = [];
     const q = query(collection(db, "jobs"));
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach((job) => {
       //doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
+      tempJobs.push({
+        ...job.data(),
+        id: job.id,
+      });
     });
+    setJobs(tempJobs);
   };
   useEffect(() => {
     fetchJobs();
@@ -32,7 +37,7 @@ function App() {
       <Navbar />
       <Header />
       <SearchBar />
-      {jobData.map((job) => (
+      {jobs.map((job) => (
         <JobCard key={job.id} {...job} />
       ))}
     </div>
