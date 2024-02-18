@@ -37,7 +37,7 @@ function App() {
     const jobsRef = query(collection(db, "jobs"));
     const q = query(
       jobsRef,
-      where("type", "==", jobCriteria.title),
+      where("type", "==", jobCriteria.type),
       where("title", "==", jobCriteria.title),
       where("experience", "==", jobCriteria.experience),
       where("location", "==", jobCriteria.location),
