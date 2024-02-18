@@ -24,6 +24,7 @@ function App() {
       tempJobs.push({
         ...job.data(),
         id: job.id,
+        postedOn: job.data().postedOn.toDate(),
       });
     });
     setJobs(tempJobs);
