@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SearchBar() {
+  const [jobCriteria, setJobCriteria] = useState({
+    title: "",
+    location: "",
+    experience: "",
+    type: "",
+  });
+
+  const handleChange = (e) => {
+    setJobCriteria((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
   return (
     <div className="flex gap-4 my-10 justify-center px-10">
       {/* --- job role --- */}
       <select
+        onChange={handleChange}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
-        name=""
+        name="title"
+        value={jobCriteria.title}
         id=""
       >
         <option value="" disabled hidden selected>
@@ -21,8 +37,10 @@ function SearchBar() {
       </select>
       {/* --- job type --- */}
       <select
+        onChange={handleChange}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
-        name=""
+        name="type"
+        value={jobCriteria.type}
         id=""
       >
         <option value="" disabled hidden selected>
@@ -37,8 +55,10 @@ function SearchBar() {
       </select>
       {/* --- job location --- */}
       <select
+        onChange={handleChange}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
-        name=""
+        name="location"
+        value={jobCriteria.location}
         id=""
       >
         <option value="" disabled hidden selected>
@@ -55,8 +75,10 @@ function SearchBar() {
       </select>
       {/* --- Experience level--- */}
       <select
+        onChange={handleChange}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
-        name=""
+        name="experience"
+        value={jobCriteria.experience}
         id=""
       >
         <option value="" disabled hidden selected>
