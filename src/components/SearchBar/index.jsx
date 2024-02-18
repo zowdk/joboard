@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchBar() {
+function SearchBar(props) {
   const [jobCriteria, setJobCriteria] = useState({
     title: "",
     location: "",
@@ -29,7 +29,7 @@ function SearchBar() {
         value={jobCriteria.title}
         id=""
       >
-        <option value="" disabled hidden selected>
+        <option value="" disabled hidden>
           Job Role
         </option>
         <option value="iOS Developer">iOS Developer</option>
@@ -47,15 +47,13 @@ function SearchBar() {
         value={jobCriteria.type}
         id=""
       >
-        <option value="" disabled hidden selected>
+        <option value="" disabled hidden>
           Job Type
         </option>
         <option value="Full Time">Full Time</option>
         <option value="Part Time">Part Time</option>
-        <option value="Remote">Remote</option>
-        <option value="Remote/ Hybrid">Remote/ Hybrid</option>
         <option value="Internship">Internship</option>
-        <option value="Student">Student</option>
+        <option value="Contract">Contract</option>
       </select>
       {/* --- job location --- */}
       <select
@@ -65,17 +63,12 @@ function SearchBar() {
         value={jobCriteria.location}
         id=""
       >
-        <option value="" disabled hidden selected>
+        <option value="" disabled hidden>
           Location
         </option>
-        <option value="East Jutland">East Jutland</option>
-        <option value="South Jutland">South Jutland</option>
-        <option value="North Jutland">North Jutland</option>
-        <option value="Fyn">Fyn</option>
-        <option value="West Jutland">West Jutland</option>
-        <option value="Zetland">Zeatland</option>
-        <option value="Capital Region">Capital Region</option>
-        <option value="Bornholm">Bornholm</option>
+        <option value="On-site">On-site</option>
+        <option value="Hybrid">Hybrid</option>
+        <option value="Remote">Remote</option>
       </select>
       {/* --- Experience level--- */}
       <select
@@ -85,7 +78,7 @@ function SearchBar() {
         value={jobCriteria.experience}
         id=""
       >
-        <option value="" disabled hidden selected>
+        <option value="" disabled hidden>
           Experience
         </option>
         <option value="Entry Level">Entry Level</option>
