@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import JobCard from "./components/JobCard";
 import jobData from "./JobDummyData";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from "./firebase.config";
 
 function App() {
@@ -17,9 +17,11 @@ function App() {
   const fetchJobs = async () => {
     //import db from firestore
     const tempJobs = [];
-    const q = query(collection(db, "jobs"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((job) => {
+    const jobsRef = query(collection(db, "jobs"));
+    const q = query(jobsRef, orderBy("postedOn", "desc"));
+    const req = await getDocs(q);
+
+    req.forEach((job) => {
       //doc.data() is never undefined for query doc snapshots
       tempJobs.push({
         ...job.data(),
